@@ -142,4 +142,34 @@ public class GildedRoseTest {
 
         assertItemsQuality(0, regularItem);
     }
+
+    @Test
+    public void conjuredItemsQualityDecreasesByTwoEachDayBeforeSellDate() {
+        Item conjuredItem = new Item("Conjured Mana Cake", 3, 6);
+        GildedRose.addItem(conjuredItem);
+
+        makeDaysPass(3);
+
+        assertItemsQuality(0, conjuredItem);
+    }
+
+    @Test
+    public void conjuredItemsQualityDecreasesByFourEachDayAfterSellDate() {
+        Item conjuredItem = new Item("Conjured Mana Cake", 5, 18);
+        GildedRose.addItem(conjuredItem);
+
+        makeDaysPass(7);
+
+        assertItemsQuality(0, conjuredItem);
+    }
+
+    @Test
+    public void conjuredItemsQualityCannotBeLessThanZero() {
+        Item conjuredItem = new Item("Conjured Mana Cake", 5, 18);
+        GildedRose.addItem(conjuredItem);
+
+        makeDaysPass(200);
+
+        assertItemsQuality(0, conjuredItem);
+    }
 }
