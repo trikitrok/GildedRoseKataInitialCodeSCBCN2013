@@ -85,4 +85,18 @@ public class GildedRose {
             }
         }
     }
+
+    public static void addItem(Item item) {
+        if (items == null)
+            items = new ArrayList<Item>();
+        items.add(item);
+    }
+
+    public static int itemsSize() {
+        return items.size();
+    }
+
+    public static Item getItemAtIndex(int index) {
+        return items.get(index);
+    }
 }
